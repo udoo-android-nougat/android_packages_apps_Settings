@@ -26,16 +26,16 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES := \
     $(call all-java-files-under, src) \
-    $(call all-java-files-under,../../../external/koush/Widgets/Widgets/src) \
-    $(call all-java-files-under,../../../external/koush/Superuser/Superuser/src) \
+    $(call all-java-files-under,../Superuser/Widgets/Widgets/src) \
+    $(call all-java-files-under,../Superuser/Superuser/Superuser/src) \
 
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res \
     frameworks/support/v7/preference/res \
     frameworks/support/v14/preference/res \
     frameworks/support/v7/appcompat/res \
     frameworks/support/v7/recyclerview/res \
-    external/koush/Widgets/Widgets/res \
-    external/koush/Superuser/Superuser/res \
+    packages/apps/Superuser/Widgets/Widgets/res \
+    packages/apps/Superuser/Superuser/Superuser/res \
 
 LOCAL_PACKAGE_NAME := Settings
 LOCAL_CERTIFICATE := platform
