@@ -613,7 +613,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 			File file_default_value = new File(path);
 			System.out.println("open the file");
 			if(!file_default_value.exists()) {
-				return false;
+				file_default_value.createNewFile();
 			}
 			byte echo_default_value[] = new byte[1];
 			FileInputStream input_default_value = new FileInputStream(file_default_value);
