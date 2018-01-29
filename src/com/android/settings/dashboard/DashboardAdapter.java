@@ -20,6 +20,7 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -106,13 +107,24 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     }
 
     public List<Tile> getSuggestions() {
-        return mSuggestions;
+        if ((Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.ENABLE_SUGGESTIONS, 1) == 1)) {
+             return mSuggestions;
+        } else {
+             return null;
+        }
     }
 
     public void setCategoriesAndSuggestions(List<DashboardCategory> categories,
             List<Tile> suggestions) {
-        mSuggestions = suggestions;
-        mCategories = categories;
+        if ((Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.ENABLE_SUGGESTIONS, 1) == 1)) {
+             mSuggestions = suggestions;
+        } else {
+             mSuggestions = null;
+        }
+             mCategories = categories;
+             recountItems();
 
         // TODO: Better place for tinting?
         TypedValue tintColor = new TypedValue();
